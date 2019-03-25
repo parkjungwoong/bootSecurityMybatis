@@ -11,21 +11,18 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 @Configuration
 @EnableWebSecurity //Spring security filter chain 추가
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    final String ID_PW_LOGIN_URL = "";
+    final String TAUTH_FIN_URL = "";
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-
         http
-                .authorizeRequests()
-                .antMatchers("/home/**").hasRole("USER")
-                .antMatchers("/**").permitAll()
-                .and()
                 .csrf().disable()
-                .formLogin().disable();
-    }
-
-    @Bean
-    @Override
-    public UserDetailsService userDetailsService() {
-        return new CustomUserService();
+                .authorizeRequests()
+                .antMatchers(ID_PW_LOGIN_URL,TAUTH_FIN_URL)
+                .permitAll()
+                .and()
+                .addFilterBefore()
+                //todo : 1차 인증에 대한 필터 구현 및 등록 필요
     }
 }
