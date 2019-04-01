@@ -3,10 +3,11 @@ package com.myuoong.appAdmin.config.security.jwt.token;
 import com.myuoong.appAdmin.model.Scopes;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
-import org.springframework.security.authentication.BadCredentialsException;
 
 import java.util.List;
 import java.util.Optional;
+
+import static com.myuoong.appAdmin.common.ComConst.JWT_KEY_SCOPES;
 
 
 @SuppressWarnings("unchecked")
@@ -18,20 +19,15 @@ public class RefreshToken implements JwtToken {
     }
 
     /**
-     * Creates and validates Refresh token 
-     * 
+     *
      * @param token
      * @param signingKey
-     * 
-     * @throws BadCredentialsException
-     * @throws JwtExpiredTokenException
-     * 
      * @return
      */
     public static Optional<RefreshToken> create(RawAccessJwtToken token, String signingKey) {
         Jws<Claims> claims = token.parseClaims(signingKey);
 
-        List<String> scopes = claims.getBody().get("scopes", List.class);
+        List<String> scopes = claims.getBody().get(JWT_KEY_SCOPES, List.class);
         if (scopes == null || scopes.isEmpty() 
                 || !scopes.stream().filter(scope -> Scopes.REFRESH_TOKEN.authority().equals(scope)).findFirst().isPresent()) {
             return Optional.empty();

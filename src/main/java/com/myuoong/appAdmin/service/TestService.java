@@ -31,7 +31,4 @@ public class TestService {
         cityMapper.insertCity(city);
     }
 
-    public Map getUserById(String id) {
-        return userMapper.findById(id);
-    }
 }

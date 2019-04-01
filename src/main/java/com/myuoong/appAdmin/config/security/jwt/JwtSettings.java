@@ -1,59 +1,29 @@
 package com.myuoong.appAdmin.config.security.jwt;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
+import lombok.Data;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
-@Configuration
-//@ConfigurationProperties(prefix = "demo.security.jwt")
+@Data
+@Component
 public class JwtSettings {
-    /**
-     * {@link JwtToken} will expire after this time.
-     */
+    //엑세스 토큰 만료 기간
+    @Value("${jwt.tokenExpirationTime}")
     private Integer tokenExpirationTime;
 
-    /**
-     * Token issuer.
-     */
+    //
+    @Value("${jwt.tokenIssuer}")
     private String tokenIssuer;
     
-    /**
-     * Key is used to sign {@link JwtToken}.
-     */
+    //토큰 서명 키
+    @Value("${jwt.tokenSigningKey}")
     private String tokenSigningKey;
-    
-    /**
-     * {@link JwtToken} can be refreshed during this timeframe.
-     */
+
+    //리프레시 토큰 만료 기간
+    @Value("${jwt.refreshTokenExpTime}")
     private Integer refreshTokenExpTime;
-    
-    public Integer getRefreshTokenExpTime() {
-        return refreshTokenExpTime;
-    }
 
-    public void setRefreshTokenExpTime(Integer refreshTokenExpTime) {
-        this.refreshTokenExpTime = refreshTokenExpTime;
-    }
-
-    public Integer getTokenExpirationTime() {
-        return tokenExpirationTime;
-    }
-    
-    public void setTokenExpirationTime(Integer tokenExpirationTime) {
-        this.tokenExpirationTime = tokenExpirationTime;
-    }
-    
-    public String getTokenIssuer() {
-        return tokenIssuer;
-    }
-    public void setTokenIssuer(String tokenIssuer) {
-        this.tokenIssuer = tokenIssuer;
-    }
-    
-    public String getTokenSigningKey() {
-        return tokenSigningKey;
-    }
-    
-    public void setTokenSigningKey(String tokenSigningKey) {
-        this.tokenSigningKey = tokenSigningKey;
-    }
+    //톡인증 토큰 만료 기간
+    @Value("${jwt.talkTokenExpirationTime}")
+    private Integer talkTokenExpirationTime;
 }

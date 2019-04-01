@@ -11,4 +11,27 @@
         WHERE ID = #{id}
     </select>
 
+    <select id="selectAuthTradeById" resultType="authTrade">
+        SELECT *
+        FROM AUTH_TRADE
+        WHERE TRADE_NO = #{tradeNo}
+    </select>
+
+    <insert id="insertAuthTrade" parameterType="authTrade">
+        INSERT INTO AUTH_TRADE
+        (
+          TRADE_NO
+          ,USER_ID
+          ,REG_DT
+          ,AUTO_YN
+        )
+        VALUES
+        (
+          #{tradeNo}
+          ,#{userId}
+          ,#{regDt}
+          ,#{autoYn}
+        )
+    </insert>
+
 </mapper>

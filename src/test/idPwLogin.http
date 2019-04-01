@@ -2,18 +2,39 @@ POST http://localhost:8080/idPwLogin
 Content-Type: application/json
 
 {
-  "id": 999,
-  "value": "content"
+  "id": "admin",
+  "pw": "1234",
+  "path" : "mobile",
+  "token" : ""
 }
 
 ###
 
-POST http://localhost:8080/test
+POST http://localhost:8080/tauthFin
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInNjb3BlcyI6WyJST0xFX1RBTEtfVE9LRU4iXSwidGFsa1RyYWRlTm8iOiIyMDE5MDMzMDE4NTgzOGFkbWluIiwiaXNzIjoibW9iaWxpYW5zIiwiaWF0IjoxNTUzOTM5OTE4LCJleHAiOjE1NTM5NDAwOTh9.r1SyE5-S6hHbNtfbO8vN0By9C3_dzqzR1CCQOTkLtgI6shxKGnlE_OfZV2sDqYz-Xvw2anks99NilMcb4pi4eg
 Content-Type: application/json
 
 {
-  "id": 999,
-  "value": "content"
+  "userId": "admin",
+  "svcId": "12345",
+  "tNo": "20190330185838admin",
+  "resultCd": "0000",
+  "mac": "mac"
 }
+
+###
+
+POST http://localhost:8080/api/home/test
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInNjb3BlcyI6WyJST0xFX0FETUlOIl0sInN2Y0lkIjoiNzc4OCIsInBob25lIjoiMDEwODQyMjYzMTgiLCJpc3MiOiJtb2JpbGlhbnMiLCJpYXQiOjE1NTM5NDA2OTEsImV4cCI6MTU1Mzk0MDk5MX0.pZM_Qz-1ge-hwPwWSY1LiS18Yd6tLUuQu1XJ0OYmXwxDO4LZJzWjvdidIlmJg94iqahuA0_uRtOMmHct4_Rl3g1
+Content-Type: application/json
+
+{
+  "userId": "admin"
+}
+
+###
+POST http://localhost:8080/api/refreshToken
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInNjb3BlcyI6WyJST0xFX1JFRlJFU0hfVE9LRU4iXSwiaXNzIjoibW9iaWxpYW5zIiwianRpIjoiOWIyZjlmMDgtNmE2MC00MWFmLTg0NTItOTE3ODAwNzlhZGZjIiwiaWF0IjoxNTUzOTQwMDEzLCJleHAiOjE1NTQyNDI0MTN9.S6emkpeTne3bsKjWnwzlm6_cg99BXHVemJf8lRopQUdjTTwH6T0C3FpQVbxMJ4jkJDwAqhUeVyyuci-NPKPWDQ
+Content-Type: application/json
 
 ###
